@@ -1,4 +1,4 @@
-#jfinal-bootstrap-table
+#jfinal-bootstrap-table demo-develop
 ## 技术栈
 * jfinal2.2
 * bootstrap3
