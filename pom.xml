@@ -6,6 +6,18 @@
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>jfinal-bootstrap-table Maven Webapp</name>
+	<url>http://netbuffer.github.io</url>
+	<developers>
+		<developer>
+			<id>netbuffer</id>
+			<name>netbuffer</name>
+			<email>javawiki@163.com</email>
+			<url>http://netbuffer.github.io</url>
+		</developer>
+	</developers>
+	<!-- 引用parent依赖 -->
+	<!-- <parent> <groupId>cn.com.ttblog.app</groupId> <artifactId>app</artifactId> 
+		<version>0.0.1-SNAPSHOT</version> </parent> -->
 	<dependencies>
 		<dependency>
 			<groupId>com.jfinal</groupId>
@@ -69,6 +81,16 @@
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 			<version>2.9.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.13</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
 		</dependency>
 	</dependencies>
 	<build>
