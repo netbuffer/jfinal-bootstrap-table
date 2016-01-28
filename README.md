@@ -1,6 +1,7 @@
 #jfinal-bootstrap-table demo-develop
 ## 技术栈
 * jfinal2.2
+* poi3
 * bootstrap3
 * bootstrap-table1.9
 * druid

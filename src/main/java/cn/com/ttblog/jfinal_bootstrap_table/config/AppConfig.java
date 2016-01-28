@@ -65,6 +65,7 @@ public class AppConfig extends JFinalConfig {
 		 * 即可将基础路径指向项目根径之外，方便单机多实例部署。当该路径参数设置为相对路径时， 则是以项目根为基础的相对路径
 		 */
 		me.setBaseUploadPath("upload");
+		me.setBaseDownloadPath("export");
 		me.setViewType(ViewType.OTHER);
 		me.setError403View("/403.html");
 		// 404错误是web应用报出的，只能依靠web.xml里面来配置

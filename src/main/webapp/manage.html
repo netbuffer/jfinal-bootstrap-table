@@ -9,10 +9,9 @@
 <script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap-table/1.10.0/bootstrap-table.min.js"></script>
-<script src="//cdn.bootcss.com/bootstrap-table/1.10.0/locale/bootstrap-table-zh-CN.min.js"></script>
-<!-- 	<script src="js/tableExport.js"></script> -->
-<!-- 	<script src="js/jquery.base64.js"></script> -->
 <script src="//cdn.bootcss.com/bootstrap-table/1.10.0/extensions/export/bootstrap-table-export.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap-table/1.10.0/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="//rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js"></script>
 <script type="text/javascript">
 	    $(function(){
 	    	$.getJSON('newdata',function(data){
@@ -111,6 +110,11 @@
     		   window.location.href="user/export";
     	   }
        }
+       function exporyAll(){
+    	   if(confirm("确定导出所有记录吗？")){
+    		   window.location.href="export";
+    	   }
+       }
     </script>
 </head>
 <body>
@@ -160,6 +164,10 @@
 				</button>
 			</div>
 		</div> -->
+		<button type="button" class="btn btn-default"
+			onclick="exporyAll();">
+			<span class="glyphicon glyphicon-arrow-down"></span> 导出历史数据到excel
+		</button>
 		<table id="dtb" data-toggle="table" data-url="user/userlist"
 			class="table table-hover" data-show-columns="true" data-search="true"
 			data-show-refresh="true" data-show-toggle="true"

@@ -1,5 +1,13 @@
 package cn.com.ttblog.jfinal_bootstrap_table.controller;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,8 +15,11 @@ import org.slf4j.LoggerFactory;
 import cn.com.ttblog.jfinal_bootstrap_table.Constant.ConfigConstant;
 import cn.com.ttblog.jfinal_bootstrap_table.interceptor.LoginValidator;
 import cn.com.ttblog.jfinal_bootstrap_table.interceptor.TimeInterceptor;
+import cn.com.ttblog.jfinal_bootstrap_table.model.User;
 import cn.com.ttblog.jfinal_bootstrap_table.service.IUserService;
 import cn.com.ttblog.jfinal_bootstrap_table.service.impl.UserServiceImpl;
+import cn.com.ttblog.jfinal_bootstrap_table.util.BeanMapUtil;
+import cn.com.ttblog.jfinal_bootstrap_table.util.POIExcelUtil;
 
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Enhancer;
@@ -66,5 +77,29 @@ public class IndexController extends Controller {
 		setAttr("newcount", newcount);
 		setAttr("username", username);
 		renderJson();
+	}
+	
+	public void export(){
+		SimpleDateFormat format=new SimpleDateFormat("yyyyMMddHHmmss");
+		List<User> users=User.dao.find("select * from "+ConfigConstant.USERTABLE+" limit 50");
+		String projectPath=getRequest().getServletContext().getRealPath("export");
+		int userCount=users.size();
+		List<Map<String, Object>> mps=new ArrayList<Map<String,Object>>(users.size());
+		for(int i=0;i<userCount;i++){
+			Map<String, Object> m=BeanMapUtil.transBean2Map(users.get(i));
+			mps.add(m);
+		}
+		logIndex.info("aaa:"+mps.toString());
+		List<String> titles=new ArrayList<String>(mps.get(0).size()-1);
+		titles.add("adddate");
+		titles.add("age");
+		titles.add("deliveryaddress");
+		titles.add("id");
+		titles.add("name");
+		titles.add("phone");
+		titles.add("sex");
+		String file=projectPath+format.format(new Date())+"."+ConfigConstant.EXCELSTR;
+		POIExcelUtil.export(titles, mps,file);
+		renderFile(new File(file));
 	}
 }
