@@ -8,4 +8,5 @@ public class ConfigConstant {
 	public static final String ISLOGIN = "islogin";
 	public static final String USERNAME = "username";
 	public static final String EXCELSTR = "xls";
+	public static final String PROJECTNAME = "jfinal-bootstrap-table";
 }
