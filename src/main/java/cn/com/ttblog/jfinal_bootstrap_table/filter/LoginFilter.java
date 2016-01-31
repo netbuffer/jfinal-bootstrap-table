@@ -84,6 +84,8 @@ public class LoginFilter implements Filter {
 					return ;
 				}
 			}
+			httpServletResponse.sendRedirect(httpServletRequest
+					.getContextPath() + "/index.html");
 		}
 	}
 
