@@ -22,6 +22,7 @@ import com.jfinal.plugin.activerecord.ModelRecordElResolver;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.druid.DruidStatViewHandler;
 import com.jfinal.plugin.druid.IDruidStatViewAuth;
+import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.render.ViewType;
 
 /**
@@ -105,6 +106,8 @@ public class AppConfig extends JFinalConfig {
 		_MappingKit.mapping(arp);
 		me.add(arp);
 		// arp.addMapping("user", User.class);
+		//EhCachePlugin 
+		me.add(new EhCachePlugin());
 	}
 
 	/**
