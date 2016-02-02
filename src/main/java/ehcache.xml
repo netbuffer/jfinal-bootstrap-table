@@ -1,21 +1,28 @@
-<?xml version="1.0" encoding="gbk"?>
-<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ehcache.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
     <diskStore path="java.io.tmpdir"/>
     <defaultCache maxElementsInMemory="10000" eternal="false" timeToIdleSeconds="30" timeToLiveSeconds="30" overflowToDisk="true"/>
     <!-- 
-       	 ÅäÖÃ×Ô¶¨Òå»º´æ
-        maxElementsInMemory£º»º´æÖÐÔÊÐí´´½¨µÄ×î´ó¶ÔÏóÊý
-        eternal£º»º´æÖÐ¶ÔÏóÊÇ·ñÎªÓÀ¾ÃµÄ£¬Èç¹ûÊÇ£¬³¬Ê±ÉèÖÃ½«±»ºöÂÔ£¬¶ÔÏó´Ó²»¹ýÆÚ¡£
-        timeToIdleSeconds£º»º´æÊý¾ÝµÄ¶Û»¯Ê±¼ä£¬Ò²¾ÍÊÇÔÚÒ»¸öÔªËØÏûÍöÖ®Ç°,Á½´Î·ÃÎÊÊ±¼äµÄ×î´óÊ±¼ä¼ä¸ôÖµ£¬ÕâÖ»ÄÜÔÚÔªËØ²»ÊÇÓÀ¾Ã×¤ÁôÊ±ÓÐÐ§£¬Èç¹û¸ÃÖµÊÇ 0 ¾ÍÒâÎ¶×ÅÔªËØ¿ÉÒÔÍ£¶ÙÎÞÇî³¤µÄÊ±¼ä¡£
-        timeToLiveSeconds£º»º´æÊý¾ÝµÄÉú´æÊ±¼ä£¬Ò²¾ÍÊÇÒ»¸öÔªËØ´Ó¹¹½¨µ½ÏûÍöµÄ×î´óÊ±¼ä¼ä¸ôÖµ£¬ ÕâÖ»ÄÜÔÚÔªËØ²»ÊÇÓÀ¾Ã×¤ÁôÊ±ÓÐÐ§£¬Èç¹û¸ÃÖµÊÇ0¾ÍÒâÎ¶×ÅÔªËØ¿ÉÒÔÍ£¶ÙÎÞÇî³¤µÄÊ±¼ä¡£
-        overflowToDisk£ºÄÚ´æ²»×ãÊ±£¬ÊÇ·ñÆôÓÃ´ÅÅÌ»º´æ¡£
-        memoryStoreEvictionPolicy£º»º´æÂúÁËÖ®ºóµÄÌÔÌ­Ëã·¨¡£
+       	 é…ç½®è‡ªå®šä¹‰ç¼“å­˜
+        maxElementsInMemoryï¼šç¼“å­˜ä¸­å…è®¸åˆ›å»ºçš„æœ€å¤§å¯¹è±¡æ•°
+        eternalï¼šç¼“å­˜ä¸­å¯¹è±¡æ˜¯å¦ä¸ºæ°¸ä¹…çš„ï¼Œå¦‚æžœæ˜¯ï¼Œè¶…æ—¶è®¾ç½®å°†è¢«å¿½ç•¥ï¼Œå¯¹è±¡ä»Žä¸è¿‡æœŸã€‚
+        timeToIdleSecondsï¼šç¼“å­˜æ•°æ®çš„é’åŒ–æ—¶é—´ï¼Œä¹Ÿå°±æ˜¯åœ¨ä¸€ä¸ªå…ƒç´ æ¶ˆäº¡ä¹‹å‰,ä¸¤æ¬¡è®¿é—®æ—¶é—´çš„æœ€å¤§æ—¶é—´é—´éš”å€¼ï¼Œè¿™åªèƒ½åœ¨å…ƒç´ ä¸æ˜¯æ°¸ä¹…é©»ç•™æ—¶æœ‰æ•ˆï¼Œå¦‚æžœè¯¥å€¼æ˜¯ 0 å°±æ„å‘³ç€å…ƒç´ å¯ä»¥åœé¡¿æ— ç©·é•¿çš„æ—¶é—´ã€‚
+        timeToLiveSecondsï¼šç¼“å­˜æ•°æ®çš„ç”Ÿå­˜æ—¶é—´ï¼Œä¹Ÿå°±æ˜¯ä¸€ä¸ªå…ƒç´ ä»Žæž„å»ºåˆ°æ¶ˆäº¡çš„æœ€å¤§æ—¶é—´é—´éš”å€¼ï¼Œ è¿™åªèƒ½åœ¨å…ƒç´ ä¸æ˜¯æ°¸ä¹…é©»ç•™æ—¶æœ‰æ•ˆï¼Œå¦‚æžœè¯¥å€¼æ˜¯0å°±æ„å‘³ç€å…ƒç´ å¯ä»¥åœé¡¿æ— ç©·é•¿çš„æ—¶é—´ã€‚
+        overflowToDiskï¼šå†…å­˜ä¸è¶³æ—¶ï¼Œæ˜¯å¦å¯ç”¨ç£ç›˜ç¼“å­˜ã€‚
+        memoryStoreEvictionPolicyï¼šç¼“å­˜æ»¡äº†ä¹‹åŽçš„æ·˜æ±°ç®—æ³•ã€‚
     -->
     <cache name="/newdata" 
-        maxElementsInMemory="1" 
+        maxElementsInMemory="10" 
         eternal="false"
         overflowToDisk="false" 
-        timeToIdleSeconds="60" 
+        timeToIdleSeconds="0" 
+        timeToLiveSeconds="0"
+        memoryStoreEvictionPolicy="LFU" />
+    <cache name="/user/userlist" 
+        maxElementsInMemory="10" 
+        eternal="false"
+        overflowToDisk="false" 
+        timeToIdleSeconds="0" 
         timeToLiveSeconds="0"
         memoryStoreEvictionPolicy="LFU" />
 </ehcache>
