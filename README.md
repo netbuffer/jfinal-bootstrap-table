@@ -2,6 +2,8 @@
 ## 技术栈
 * jfinal2.2
 * poi3
+* ehcache
+* 自定义标签开发
 * bootstrap3
 * bootstrap-table1.9
 * druid
