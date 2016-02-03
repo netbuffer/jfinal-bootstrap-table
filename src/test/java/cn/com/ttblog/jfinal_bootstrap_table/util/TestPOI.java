@@ -14,23 +14,23 @@ public class TestPOI {
 
 	@Test
 	public void tt() throws IOException {
-		File directory = new File("");// 参数为空
-		String projectpath=directory.getAbsolutePath();
-		POIExcelUtil.exec(projectpath+File.separator+"aa.xls");
-		List<String> titles=new ArrayList<String>(){};
-		titles.add("昵称");
-		titles.add("姓名");
-		titles.add("性别");
-		List<Map<String, Object>> datas=new ArrayList<Map<String, Object>>();
-		for(int i=0;i<4;i++){
-			//保障顺序
-			Map<String, Object> mp=new LinkedHashMap<String, Object>();
-			mp.put("n","tt"+i);
-			mp.put("x","行ing"+i);
-			mp.put("b","男"+i);
-			datas.add(mp);
-		}
-		POIExcelUtil.export(titles, datas, projectpath+File.separator+"test.xls");
+//		File directory = new File("");// 参数为空
+//		String projectpath=directory.getAbsolutePath();
+//		POIExcelUtil.exec(projectpath+File.separator+"aa.xls");
+//		List<String> titles=new ArrayList<String>(){};
+//		titles.add("昵称");
+//		titles.add("姓名");
+//		titles.add("性别");
+//		List<Map<String, Object>> datas=new ArrayList<Map<String, Object>>();
+//		for(int i=0;i<4;i++){
+//			//保障顺序
+//			Map<String, Object> mp=new LinkedHashMap<String, Object>();
+//			mp.put("n","tt"+i);
+//			mp.put("x","行ing"+i);
+//			mp.put("b","男"+i);
+//			datas.add(mp);
+//		}
+//		POIExcelUtil.export(titles, datas, projectpath+File.separator+"test.xls");
 	}
 
 	public void sysoutpath() throws IOException {

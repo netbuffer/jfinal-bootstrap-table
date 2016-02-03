@@ -1,5 +1,7 @@
 package cn.com.ttblog.jfinal_bootstrap_table.config;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 
 import cn.com.ttblog.jfinal_bootstrap_table.interceptor.AuthInterceptor;
@@ -14,6 +16,7 @@ import com.jfinal.config.Interceptors;
 import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
+import com.jfinal.kit.PathKit;
 import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
@@ -22,6 +25,7 @@ import com.jfinal.plugin.activerecord.ModelRecordElResolver;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.druid.DruidStatViewHandler;
 import com.jfinal.plugin.druid.IDruidStatViewAuth;
+import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.render.ViewType;
 
 /**
@@ -105,8 +109,11 @@ public class AppConfig extends JFinalConfig {
 		_MappingKit.mapping(arp);
 		me.add(arp);
 		// arp.addMapping("user", User.class);
+		//EhCachePlugin 
+		System.out.println("路径:"+PathKit.getRootClassPath()+File.separator+"ehcache.xml");
+		me.add(new EhCachePlugin());
 	}
-
+	
 	/**
 	 * 拦截器 ,当某个 Method 被多个级别的拦截器所拦截，拦截器各级别执行的次序依次为：Global、
 	 * Inject、Class、Method，如果同级中有多个拦截器，那么同级中的执行次序是：配置在前面的 先执行。 拦截器从上到下依次分为

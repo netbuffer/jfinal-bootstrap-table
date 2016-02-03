@@ -26,6 +26,7 @@ import com.jfinal.aop.Enhancer;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
+import com.jfinal.plugin.ehcache.CacheInterceptor;
 
 /**
  * index控制器
@@ -72,7 +73,12 @@ public class IndexController extends Controller {
 		redirect("/index.html");
 	}
 	
+	/**
+	 * 开启缓存
+	 */
+	@Before({CacheInterceptor.class})
 	public void newdata(){
+		logIndex.info("newdata执行!");
 		int newcount=userservice.getNewData();
 		String username=getSession().getAttribute(ConfigConstant.USERNAME).toString();
 		setAttr("newcount", newcount);
