@@ -109,4 +109,8 @@ public class IndexController extends Controller {
 		POIExcelUtil.export(titles, mps,file);
 		renderFile(new File(file));
 	}
+	
+	public void testWrapper() {
+		renderJson(getRequest().getParameterMap());
+	}
 }
