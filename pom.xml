@@ -15,6 +15,9 @@
 			<url>http://netbuffer.github.io</url>
 		</developer>
 	</developers>
+	<properties>
+		<jfinal.version>2.2</jfinal.version>
+	</properties>
 	<!-- 引用parent依赖 -->
 	<!-- <parent> <groupId>cn.com.ttblog.app</groupId> <artifactId>app</artifactId> 
 		<version>0.0.1-SNAPSHOT</version> </parent> -->
@@ -22,7 +25,7 @@
 		<dependency>
 			<groupId>com.jfinal</groupId>
 			<artifactId>jfinal</artifactId>
-			<version>2.2</version>
+			<version>${jfinal.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.freemarker</groupId>
@@ -112,6 +115,26 @@
 	</dependencies>
 	<build>
 		<finalName>jfinal-bootstrap-table</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.txt</include>
+				</includes>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.txt</include>
+				</includes>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
