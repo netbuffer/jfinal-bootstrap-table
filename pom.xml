@@ -16,6 +16,7 @@
 		</developer>
 	</developers>
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jfinal.version>2.2</jfinal.version>
 	</properties>
 	<!-- 引用parent依赖 -->
