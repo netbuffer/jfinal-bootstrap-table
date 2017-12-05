@@ -1,6 +1,6 @@
 # jfinal-bootstrap-table demo
 ## 技术栈/technology stack
-* jfinal2.2
+* jfinal3.3
 * poi3
 * ehcache
 * 自定义标签开发

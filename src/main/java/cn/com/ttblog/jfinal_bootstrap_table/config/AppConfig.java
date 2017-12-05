@@ -27,6 +27,9 @@ import com.jfinal.plugin.druid.DruidStatViewHandler;
 import com.jfinal.plugin.druid.IDruidStatViewAuth;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.render.ViewType;
+import com.jfinal.template.Engine;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * jfinal配置文件
@@ -35,6 +38,8 @@ import com.jfinal.render.ViewType;
  *
  */
 public class AppConfig extends JFinalConfig {
+
+	private static final Logger LOGGER= LoggerFactory.getLogger(AppConfig.class);
 
 	/**
 	 * 启动完回调
@@ -70,7 +75,7 @@ public class AppConfig extends JFinalConfig {
 		 */
 		me.setBaseUploadPath("upload");
 		me.setBaseDownloadPath("export");
-		me.setViewType(ViewType.OTHER);
+		me.setViewType(ViewType.FREE_MARKER);
 		me.setError403View("/403.html");
 		// 404错误是web应用报出的，只能依靠web.xml里面来配置
 		me.setError404View("/404.html");
@@ -84,6 +89,11 @@ public class AppConfig extends JFinalConfig {
 		// "/blog"
 		me.add(new FrontRoutes()); // 前端路由
 		me.add(new AdminRoutes()); // 后端路由
+	}
+
+	@Override
+	public void configEngine(Engine engine) {
+		LOGGER.info("jfinal engine config:{}",engine);
 	}
 
 	/**
