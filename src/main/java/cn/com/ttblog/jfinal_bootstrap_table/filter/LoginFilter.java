@@ -12,9 +12,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
 import cn.com.ttblog.jfinal_bootstrap_table.constant.ConfigConstant;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class LoginFilter implements Filter {
 
@@ -72,7 +71,7 @@ public class LoginFilter implements Filter {
 			for(Cookie cookie:cookies){
 //				System.out.println("cookiename:"+cookie.getName());
 				if(cookie.getName().equals(ConfigConstant.USERNAME)){
-					System.out.println("cookie:"+ToStringBuilder.reflectionToString(cookie));
+					System.out.println("cookie:"+ ToStringBuilder.reflectionToString(cookie));
 					httpServletRequest.getSession().setAttribute(ConfigConstant.ISLOGIN, true);
 					httpServletRequest.getSession().setAttribute(ConfigConstant.USERNAME, cookie.getValue());
 					if(uri.endsWith(ConfigConstant.PROJECTNAME+"/")){

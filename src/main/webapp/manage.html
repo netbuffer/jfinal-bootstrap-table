@@ -82,7 +82,7 @@
 			</thead>
 		</table>
 
-		<div class="modal fade" id="edituc" tabindex="-1" role="dialog"
+		<div class="modal fade" id="edit_user_modal" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -94,14 +94,13 @@
 						<h4 class="modal-title" id="myModalLabel">编辑当前用户的资料</h4>
 					</div>
 					<div class="modal-body">
-						<input id="waiteduc" type="text" class="form-control" value=""
-							pattern="" required="required" /> <input id="waitph"
-							type="hidden" />
+						<input id="user_phone" name="phone" type="text" class="form-control" value="" pattern="" required="required" />
+						<input id="user_id" name="id" type="hidden" />
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 						<button type="button" class="btn btn-primary"
-							onclick="saveUcode();">保存</button>
+							onclick="save_user();">保存</button>
 					</div>
 				</div>
 			</div>
@@ -168,10 +167,9 @@
                 console.log(value, row, index);
             },
             'click .edit': function (e, value, row, index) {
-                alert($("[data-index="+index+"]").find('td').eq(8).html());
-                //alert($("[data-index="+index+"]").find('td').eq(3).text());
-                $("#waitph").val($("[data-index="+index+"]").find('td').eq(3).text());
-                $("#edituc").modal("show");
+                $("#user_phone").val(row.phone);
+                $("#user_id").val(row.id);
+                $("#edit_user_modal").modal("show");
                 //alert('You click edit icon, row: ' + JSON.stringify(row));
                 //console.log(value, row, index);
             },
@@ -203,14 +201,11 @@
             return params;
         }
 
-        function saveUcode(){
-            //alert($("#waiteduc").val());
-            //alert($("#waitph").val());
-            $.post('user/edit',{"phone":$("#waitph").val(),"uc":$("#waiteduc").val()},function(){
-                //alert('保存成功!');
-                $("#edituc").modal('hide');
-                $("#waiteduc").val('');
-                $("#waitph").val('');
+        function save_user(){
+            $.post('user/update',{"phone":$("#user_phone").val(),"id":$("#user_id").val()},function(){
+                $("#edit_user_modal").modal('hide');
+                $("#user_id").val('');
+                $("#user_phone").val('');
                 refreshTable();
             });
         }

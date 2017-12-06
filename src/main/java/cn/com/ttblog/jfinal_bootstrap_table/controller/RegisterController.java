@@ -1,12 +1,10 @@
 package cn.com.ttblog.jfinal_bootstrap_table.controller;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import cn.com.ttblog.jfinal_bootstrap_table.interceptor.UserValidator;
 import cn.com.ttblog.jfinal_bootstrap_table.model.User;
-
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 
@@ -26,7 +24,7 @@ public class RegisterController extends Controller {
 	public void save() {
 		User u=getModel(User.class);
 		u.setAdddate((int)(System.currentTimeMillis()/1000));
-		regLog.info("user:"+ToStringBuilder.reflectionToString(u));
+		regLog.info("user:"+ ToStringBuilder.reflectionToString(u));
 		try {
 			if(u.save()){
 				redirect("/register-success.html");

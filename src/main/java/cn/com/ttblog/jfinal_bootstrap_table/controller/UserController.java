@@ -1,19 +1,17 @@
 package cn.com.ttblog.jfinal_bootstrap_table.controller;
 
-import java.util.Map;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import cn.com.ttblog.jfinal_bootstrap_table.interceptor.TimeInterceptor;
 import cn.com.ttblog.jfinal_bootstrap_table.model.User;
 import cn.com.ttblog.jfinal_bootstrap_table.service.IUserService;
 import cn.com.ttblog.jfinal_bootstrap_table.service.impl.UserServiceImpl;
-
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Enhancer;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.ehcache.CacheInterceptor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.Map;
 
 /**
  * user控制器
@@ -23,8 +21,7 @@ import com.jfinal.plugin.ehcache.CacheInterceptor;
 @Before({ TimeInterceptor.class })
 public class UserController extends Controller {
 	private static IUserService userservice=Enhancer.enhance(UserServiceImpl.class);
-	private static Logger userLog= LoggerFactory
-			.getLogger(UserController.class);
+	private static final Logger LOGGER=LoggerFactory.getLogger(UserController.class);
 
 	public void index() {
 		render("index.html");
@@ -40,9 +37,17 @@ public class UserController extends Controller {
 		Map<String, Object> data=userservice.getUserList(offset, limit);
 		renderJson(data);
 	}
+
 	public void delete(){
 		User.dao.deleteById(getPara("id"));
 		setAttr("status", "success");
 		renderJson();
 	}
+
+	public void update(){
+		User user=getModel(User.class,"");
+		LOGGER.info("update user:{}",user);
+		renderText(String.valueOf(userservice.update(user)));
+	}
+
 }

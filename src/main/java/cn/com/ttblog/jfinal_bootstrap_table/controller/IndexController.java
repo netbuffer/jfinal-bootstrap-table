@@ -1,16 +1,5 @@
 package cn.com.ttblog.jfinal_bootstrap_table.controller;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import cn.com.ttblog.jfinal_bootstrap_table.constant.ConfigConstant;
 import cn.com.ttblog.jfinal_bootstrap_table.interceptor.LoginValidator;
 import cn.com.ttblog.jfinal_bootstrap_table.interceptor.TimeInterceptor;
@@ -19,13 +8,22 @@ import cn.com.ttblog.jfinal_bootstrap_table.service.IUserService;
 import cn.com.ttblog.jfinal_bootstrap_table.service.impl.UserServiceImpl;
 import cn.com.ttblog.jfinal_bootstrap_table.util.BeanMapUtil;
 import cn.com.ttblog.jfinal_bootstrap_table.util.POIExcelUtil;
-
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Enhancer;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.ehcache.CacheInterceptor;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * index控制器
@@ -48,16 +46,16 @@ public class IndexController extends Controller {
 	
 	@Before({LoginValidator.class})
 	public void login() {
-		Prop p = PropKit.use("config.txt");
-		String cu=p.get("musername");
-		String cp=p.get("mpassword");
+		Prop p = PropKit.use("config.properties");
+		String cu=p.get("jdbc.musername");
+		String cp=p.get("jdbc.mpassword");
 		logIndex.debug("配置:"+ToStringBuilder.reflectionToString(p));
 		String username=getPara("username");
 		String password=getPara("password");
 		if(cu.equals(username)&&cp.equals(password)){
 			getSession().setAttribute(ConfigConstant.ISLOGIN, true);
 			getSession().setAttribute(ConfigConstant.USERNAME, cu);
-			logIndex.info("登陆信息:"+ToStringBuilder.reflectionToString(this));
+			logIndex.info("登陆信息:"+ ToStringBuilder.reflectionToString(this));
 			setCookie(ConfigConstant.USERNAME, username, 86400);//1天免登陆
 			redirect("/manage.html");
 		}else{

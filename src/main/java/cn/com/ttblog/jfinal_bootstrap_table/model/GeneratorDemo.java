@@ -13,10 +13,10 @@ import com.jfinal.plugin.druid.DruidPlugin;
 public class GeneratorDemo {
 
 	public static DataSource getDataSource() {
-		Prop p = PropKit.use("config.txt");
-		DruidPlugin druidds = new DruidPlugin(p.get("jdbcUrl"),
-				p.get("user"), p.get("password"));
-		druidds.setDriverClass(p.get("driver"));
+		Prop p = PropKit.use("config.properties");
+		DruidPlugin druidds = new DruidPlugin(p.get("jdbc.jdbcUrl"),
+				p.get("jdbc.user"), p.get("jdbc.password"));
+		druidds.setDriverClass(p.get("jdbc.driver"));
 		if(druidds.start()){
 			return druidds.getDataSource();
 		}

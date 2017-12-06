@@ -1,14 +1,22 @@
 package cn.com.ttblog.jfinal_bootstrap_table.service.impl;
 
+import cn.com.ttblog.jfinal_bootstrap_table.constant.ConfigConstant;
+import cn.com.ttblog.jfinal_bootstrap_table.model.User;
+import cn.com.ttblog.jfinal_bootstrap_table.service.IUserService;
+import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Record;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.jfinal.plugin.activerecord.Db;
-import com.jfinal.plugin.activerecord.Record;
-import cn.com.ttblog.jfinal_bootstrap_table.constant.ConfigConstant;
-import cn.com.ttblog.jfinal_bootstrap_table.service.IUserService;
 
 public class UserServiceImpl implements IUserService {
+
+	private static final Logger LOGGER= LoggerFactory.getLogger(UserServiceImpl.class);
+
 //	private SimpleDateFormat format = new SimpleDateFormat(
 //			"yyyy-MM-dd HH:mm:ssSSS");
 
@@ -25,6 +33,21 @@ public class UserServiceImpl implements IUserService {
 			datas.put("total", total);
 			return datas;
 		}
+	}
+
+	public boolean update(User user) {
+		Record record=Db.findById(ConfigConstant.USERTABLE,user.getId());
+		if(StringUtils.isNotBlank(user.getName())){
+			record.set("name",user.getName());
+		}
+		if(StringUtils.isNotBlank(user.getSex())){
+			record.set("sex",user.getSex());
+		}
+		if(StringUtils.isNotBlank(user.getPhone())){
+			record.set("phone",user.getPhone());
+		}
+		LOGGER.info("修改user record:{}",record);
+		return Db.update(ConfigConstant.USERTABLE,record);
 	}
 
 	@Override

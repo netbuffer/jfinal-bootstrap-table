@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import cn.com.ttblog.jfinal_bootstrap_table.interceptor.AuthInterceptor;
 import cn.com.ttblog.jfinal_bootstrap_table.model._MappingKit;
 
+import com.alibaba.druid.filter.logging.LogFilter;
+import com.alibaba.druid.filter.logging.Slf4jLogFilter;
 import com.alibaba.druid.filter.stat.StatFilter;
 import com.alibaba.druid.util.JdbcConstants;
 import com.alibaba.druid.wall.WallFilter;
@@ -66,8 +68,9 @@ public class AppConfig extends JFinalConfig {
 	 */
 	@Override
 	public void configConstant(Constants me) {
-		Prop p = PropKit.use("config.txt");
-		me.setDevMode(p.getBoolean("devMode"));// 开发模式
+		Prop p = PropKit.use("config.properties");
+		LOGGER.info("p:{}",p);
+		me.setDevMode(p.getBoolean("app.devMode"));// 开发模式
 		me.setEncoding("utf8");
 		/**
 		 * 该路径参数接受以”/”打头或者以 windows 磁盘盘符打头的绝对路径，
@@ -101,26 +104,32 @@ public class AppConfig extends JFinalConfig {
 	 */
 	@Override
 	public void configPlugin(Plugins me) {
-		loadPropertyFile("config.txt");
-		DruidPlugin druid = new DruidPlugin(getProperty("jdbcUrl"),
-				getProperty("user"), getProperty("password"));
-		druid.setDriverClass(getProperty("driver"));
+		loadPropertyFile("config.properties");
+		DruidPlugin druid = new DruidPlugin(getProperty("jdbc.jdbcUrl"),
+				getProperty("jdbc.user"), getProperty("jdbc.password"));
+		druid.setDriverClass(getProperty("jdbc.driver"));
 		druid.addFilter(new StatFilter());
 		WallFilter wall = new WallFilter();
 		wall.setDbType(JdbcConstants.MYSQL);
 		wall.setLogViolation(true);
+		LogFilter logFilter=new Slf4jLogFilter();
+		logFilter.setConnectionLogEnabled(true);
+		logFilter.setStatementLogEnabled(true);
+		logFilter.setResultSetLogEnabled(true);
+		logFilter.setStatementExecutableSqlLogEnable(true);
 		druid.addFilter(wall);
+		druid.addFilter(logFilter);
 		me.add(druid);
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(druid);
 		arp.setDevMode(true);
-		arp.setShowSql(true);
+		arp.setShowSql(false);
 		// 设置数据库大小写不敏感
 		arp.setContainerFactory(new CaseInsensitiveContainerFactory(true));
 		_MappingKit.mapping(arp);
 		me.add(arp);
 		// arp.addMapping("user", User.class);
 		//EhCachePlugin 
-		System.out.println("路径:"+PathKit.getRootClassPath()+File.separator+"ehcache.xml");
+		LOGGER.info("ehcache.xml路径:{}",PathKit.getRootClassPath()+File.separator+"ehcache.xml");
 		me.add(new EhCachePlugin());
 	}
 	

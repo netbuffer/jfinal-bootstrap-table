@@ -1,13 +1,11 @@
 package cn.com.ttblog.jfinal_bootstrap_table.interceptor;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import cn.com.ttblog.jfinal_bootstrap_table.constant.ConfigConstant;
-
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 认证拦截器
@@ -19,7 +17,7 @@ public class AuthInterceptor implements Interceptor {
 	public void intercept(Invocation inv) {
 		authlogger.info("Before method invoking");
 		Object login=inv.getController().getSession().getAttribute(ConfigConstant.ISLOGIN);
-		authlogger.info("invoking:"+inv.getControllerKey()+"--"+inv.getMethodName()+"--"+inv.getViewPath()+"--"+ToStringBuilder.reflectionToString(inv.getArgs()));
+		authlogger.info("invoking:"+inv.getControllerKey()+"--"+inv.getMethodName()+"--"+inv.getViewPath()+"--"+ ToStringBuilder.reflectionToString(inv.getArgs()));
 		//未登录跳转
 		if(inv.getMethodName().equals("login")||inv.getMethodName().equals("captcha")||inv.getControllerKey().contains("register")
 				||(null!=login&&Boolean.parseBoolean(login.toString()))){
