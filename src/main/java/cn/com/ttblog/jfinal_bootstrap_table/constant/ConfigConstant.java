@@ -1,4 +1,4 @@
-package cn.com.ttblog.jfinal_bootstrap_table.Constant;
+package cn.com.ttblog.jfinal_bootstrap_table.constant;
 
 public class ConfigConstant {
 	/**

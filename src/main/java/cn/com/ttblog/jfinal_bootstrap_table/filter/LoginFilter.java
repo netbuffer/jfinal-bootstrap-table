@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import cn.com.ttblog.jfinal_bootstrap_table.Constant.ConfigConstant;
+import cn.com.ttblog.jfinal_bootstrap_table.constant.ConfigConstant;
 
 public class LoginFilter implements Filter {
 
