@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>信息管理页</title>
-<link rel="icon" href="favicon.ico">
-<link href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-<link href="//cdn.bootcss.com/bootstrap-table/1.10.0/bootstrap-table.min.css" rel="stylesheet">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link href="static/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="static/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+<link href="static/bootstrap-datetimepicker.min.css" rel="stylesheet">
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -130,12 +131,17 @@
 		</div>
 
 	</div>
-	<script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-	<script src="//cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-	<script src="//cdn.bootcss.com/bootstrap-table/1.10.0/bootstrap-table.min.js"></script>
-	<script src="//cdn.bootcss.com/bootstrap-table/1.10.0/extensions/export/bootstrap-table-export.min.js"></script>
-	<script src="//cdn.bootcss.com/bootstrap-table/1.10.0/locale/bootstrap-table-zh-CN.min.js"></script>
-	<script src="js/tableExport.js"></script>
+	<script src="static/jquery.min.js"></script>
+	<script src="static/bootstrap/bootstrap.min.js"></script>
+	<script src="static/bootstrap-table/bootstrap-table.min.js"></script>
+	<script src="static/bootstrap-table/bootstrap-table-export.min.js"></script>
+	<script src="static/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+	<script src="static/tableExport.js"></script>
+	<script src="static/echarts.min.js"></script>
+	<script src="static/bootbox.min.js"></script>
+	<script src="static/moment.min.js"></script>
+	<script src="static/moment.zh-cn.js"></script>
+	<script src="static/bootstrap-datetimepicker.min.js"></script>
 	<script type="text/javascript">
         $(function(){
             $.getJSON('newdata',function(data){
