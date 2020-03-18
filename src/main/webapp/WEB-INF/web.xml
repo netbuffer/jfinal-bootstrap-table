@@ -5,7 +5,7 @@
 	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	<filter>
 		<filter-name>LoginFilter</filter-name>
-		<filter-class>cn.com.ttblog.jfinal_bootstrap_table.filter.LoginFilter</filter-class>
+		<filter-class>cn.netbuffer.jfinal_bootstrap_table.filter.LoginFilter</filter-class>
 		<init-param>
 			<param-name>noFilterTags</param-name>
 			<param-value>index.html;login;register;captcha;.css;.js;.jpg</param-value>
@@ -22,7 +22,7 @@
 
 	<filter>
 		<filter-name>injectionAttackFilter</filter-name>
-		<filter-class>cn.com.ttblog.jfinal_bootstrap_table.filter.InjectionAttackFilter</filter-class>
+		<filter-class>cn.netbuffer.jfinal_bootstrap_table.filter.InjectionAttackFilter</filter-class>
 		<!-- optional parameters. values given are the defaults. they can be set 
 			to false or removed to disable. -->
 		<init-param>
@@ -47,7 +47,7 @@
 	</filter-mapping>
 	<filter>
 		<filter-name>timerFilter</filter-name>
-		<filter-class>cn.com.ttblog.jfinal_bootstrap_table.filter.TimerFilter</filter-class>
+		<filter-class>cn.netbuffer.jfinal_bootstrap_table.filter.TimerFilter</filter-class>
 		<init-param>
 			<param-name>enable</param-name>
 			<param-value>true</param-value>
@@ -60,7 +60,7 @@
 	
 	<filter>
 		<filter-name>trimFilter</filter-name>
-		<filter-class>cn.com.ttblog.jfinal_bootstrap_table.filter.TrimFilter</filter-class>
+		<filter-class>cn.netbuffer.jfinal_bootstrap_table.filter.TrimFilter</filter-class>
 		<init-param>
 			<param-name>enable</param-name>
 			<param-value>true</param-value>
@@ -75,7 +75,7 @@
 		<filter-class>com.jfinal.core.JFinalFilter</filter-class>
 		<init-param>
 			<param-name>configClass</param-name>
-			<param-value>cn.com.ttblog.jfinal_bootstrap_table.config.AppConfig</param-value>
+			<param-value>cn.netbuffer.jfinal_bootstrap_table.config.AppConfig</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>

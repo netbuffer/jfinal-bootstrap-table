@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>cn.com.ttblog.jfinal-bootstrap-table</groupId>
+	<groupId>cn.netbuffer.jfinal-bootstrap-table</groupId>
 	<artifactId>jfinal-bootstrap-table</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
@@ -20,7 +20,7 @@
 		<jfinal.version>3.3</jfinal.version>
 	</properties>
 	<!-- 引用parent依赖 -->
-	<!-- <parent> <groupId>cn.com.ttblog.app</groupId> <artifactId>app</artifactId> 
+	<!-- <parent> <groupId>cn.netbuffer.app</groupId> <artifactId>app</artifactId>
 		<version>0.0.1-SNAPSHOT</version> </parent> -->
 	<dependencies>
 		<dependency>
