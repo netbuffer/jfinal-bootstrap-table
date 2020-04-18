@@ -1,3 +1,4 @@
-/.idea
-/target
-/*.iml
+.idea
+target
+jfinal-bootstrap-table.iml
+logs

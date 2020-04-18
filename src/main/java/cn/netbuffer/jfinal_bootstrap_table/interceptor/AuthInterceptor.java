@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 认证拦截器
- * @author champ
+ * @author netbuffer
  */
 public class AuthInterceptor implements Interceptor {
 	private static Logger authlogger=LoggerFactory.getLogger(AuthInterceptor.class);

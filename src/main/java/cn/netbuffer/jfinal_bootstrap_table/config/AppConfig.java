@@ -36,7 +36,7 @@ import org.slf4j.LoggerFactory;
 /**
  * jfinal配置文件
  * 
- * @author champ
+ * @author netbuffer
  *
  */
 public class AppConfig extends JFinalConfig {
@@ -68,9 +68,9 @@ public class AppConfig extends JFinalConfig {
 	 */
 	@Override
 	public void configConstant(Constants me) {
-		Prop p = PropKit.use("config.properties");
-		LOGGER.info("p:{}",p);
-		me.setDevMode(p.getBoolean("app.devMode"));// 开发模式
+		Prop config = PropKit.use("config.properties");
+		LOGGER.info("config.properties:{}",config);
+		me.setDevMode(config.getBoolean("app.devMode"));// 开发模式
 		me.setEncoding("utf8");
 		/**
 		 * 该路径参数接受以”/”打头或者以 windows 磁盘盘符打头的绝对路径，

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<property name="logname" value="jfinal-bootstrap-table" />
-	<property name="logbase" value="${catalina.base}/logs/jfinal-bootstrap-table/" />
+
+	<property name="logbase" value="${project.basedir}/logs/jfinal-bootstrap-table/" />
+
 	<jmxConfigurator/>
 	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder charset="utf-8">
@@ -10,11 +11,12 @@
 			</encoder>
 		</encoder>
 	</appender>
+
 	<appender name="logfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
 	    <Prudent>true</Prudent>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<FileNamePattern>
-				${logbase}${logname}.%d{yyyy-MM-dd}.html
+				${logbase}%d{yyyy-MM-dd}.html
 			</FileNamePattern>
 		</rollingPolicy>
 		<layout class="ch.qos.logback.classic.html.HTMLLayout">
@@ -24,11 +26,10 @@
 		</layout>
 	</appender>
 
-	<logger name="com.alibaba" level="DEBUG" />
-
 	<root>
-		<level value="DEBUG" />
+		<level value="INFO" />
 		<appender-ref ref="stdout" />
 		<appender-ref ref="logfile" />
 	</root>
+
 </configuration>
