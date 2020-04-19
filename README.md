@@ -24,8 +24,7 @@ Execute mvn tomcat7:run to run
 > ## github:[https://github.com/netbuffer/jfinal-bootstrap-table](https://github.com/netbuffer/jfinal-bootstrap-table)
 > ## git@osc:[http://gitee.com/netbuffer/jfinal-bootstrap-table](http://gitee.com/netbuffer/jfinal-bootstrap-table)
 
-# ![](src/main/webapp/image/sys1.png)
-# ![](src/main/webapp/image/sys2.png)
+# ![](src/main/webapp/image/demo.gif)
 
 # other projects
 > `sssbootstrap_table(spring+springmvc+spring data jpa)` github:[https://github.com/netbuffer/sssbootstrap_table](https://github.com/netbuffer/sssbootstrap_table)`/`git@osc:[https://gitee.com/netbuffer/sssbootstrap_table](https://gitee.com/netbuffer/sssbootstrap_table)       
