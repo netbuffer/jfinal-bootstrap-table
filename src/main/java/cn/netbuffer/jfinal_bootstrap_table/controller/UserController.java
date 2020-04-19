@@ -9,6 +9,7 @@ import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.ehcache.CacheInterceptor;
 import lombok.extern.slf4j.Slf4j;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -34,12 +35,24 @@ public class UserController extends Controller {
         int limit = getParaToInt("limit");
         int offset = getParaToInt("offset");
         Map<String, Object> data = userservice.getUserList(offset, limit);
+        if (data == null) {
+            Map<String, Object> datas = new HashMap<String, Object>(2);
+            datas.put("rows", null);
+            datas.put("total", 0);
+            data = datas;
+        }
         renderJson(data);
     }
 
     public void delete() {
-        User.dao.deleteById(getPara("id"));
-        setAttr("status", "success");
+        String id = getPara("id");
+        boolean del = User.dao.deleteById(id);
+        log.debug("删除用户:{},结果:{}", id, del);
+        if (del) {
+            setAttr("status", "success");
+        } else {
+            setAttr("status", "false");
+        }
         renderJson();
     }
 
