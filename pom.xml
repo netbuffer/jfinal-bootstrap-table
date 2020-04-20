@@ -170,7 +170,6 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>sql-maven-plugin</artifactId>
 				<version>1.5</version>
-
 				<dependencies>
 					<!-- specify the dependent JDBC driver here 依赖的驱动 -->
 					<dependency>
@@ -179,7 +178,6 @@
 						<version>5.1.38</version>
 					</dependency>
 				</dependencies>
-
 				<!-- common configuration shared by all executions 连接配置 -->
 				<configuration>
 					<driver>com.mysql.jdbc.Driver</driver>
@@ -190,7 +188,8 @@
 				<!-- 执行的命令 -->
 				<executions>
 					<execution>
-						<phase>test</phase>
+<!--						屏蔽test时执行-->
+<!--						<phase>test</phase>-->
 						<goals>
 							<goal>execute</goal>
 						</goals>
