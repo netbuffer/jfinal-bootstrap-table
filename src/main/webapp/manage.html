@@ -71,10 +71,14 @@
             </button>
         </div>
     </div> -->
-    <br/><br/><br/>
+    <div style="margin-top:55px;"></div>
     <button type="button" class="btn btn-default"
             onclick="exporyAll();">
         <span class="glyphicon glyphicon-arrow-down"></span> 导出历史数据到excel
+    </button>
+    <button type="button" class="btn btn-default"
+            onclick="import_from_xls();">
+        <span class="glyphicon glyphicon-arrow-up"></span> 导入用户
     </button>
     <table id="dtb" data-toggle="table" data-url="user/userlist"
            class="table table-hover" data-show-columns="true" data-search="true"
