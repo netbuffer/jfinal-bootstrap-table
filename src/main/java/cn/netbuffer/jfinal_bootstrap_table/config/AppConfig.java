@@ -36,21 +36,22 @@ public class AppConfig extends JFinalConfig {
     /**
      * 启动完回调
      */
-    public void afterJFinalStart() {
+    public void onStart() {
         /**
          * 添加setResolveBeanAsModel(boolean)
          * ，设置为true时，用于指定在JSP/jstl中，对待合体后的Bean仍然采用老版本对待Model的方式输出数据，也即使用
          * Model.get(String attr)而非Bean的getter方法输出数据，有利于在关联查询时输出无 getter
          * 方法的字段值。建议mysql数据表中的字段采用驼峰命名，表名采用下划线方式命名便于win与linux间移植
          */
+        log.info("jfinal start");
         ModelRecordElResolver.setResolveBeanAsModel(true);
     }
 
     /**
      * 停止回调
      */
-    public void beforeJFinalStop() {
-        System.out.println("jfinal停止!");
+    public void onStop() {
+        log.warn("jfinal停止!");
     }
 
     ;

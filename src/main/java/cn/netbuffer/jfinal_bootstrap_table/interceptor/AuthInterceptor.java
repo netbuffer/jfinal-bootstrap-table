@@ -16,7 +16,7 @@ public class AuthInterceptor implements Interceptor {
 
     @Override
     public void intercept(Invocation inv) {
-        log.info("Before method invoking");
+        log.info("Before [{}] method invoking",inv.getMethodName());
         Object login = inv.getController().getSession().getAttribute(ConfigConstant.ISLOGIN);
         log.info("invoking:" + inv.getControllerKey() + "--" + inv.getMethodName() + "--" + inv.getViewPath() + "--" + ToStringBuilder.reflectionToString(inv.getArgs()));
         //未登录跳转
