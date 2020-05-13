@@ -103,7 +103,7 @@ public class IndexController extends Controller {
         titles.add("phone");
         titles.add("sex");
         String file = projectPath + format.format(new Date()) + "." + ConfigConstant.EXCELSTR;
-        POIExcelUtil.export(titles, mps, file);
+        POIExcelUtil.write(titles, mps, file);
         renderFile(new File(file));
     }
 

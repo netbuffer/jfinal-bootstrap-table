@@ -1,5 +1,6 @@
 package cn.netbuffer.jfinal_bootstrap_table.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.io.File;
@@ -8,11 +9,18 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 public class TestPOI {
+
+    String path = System.getProperty("user.dir") + File.separator + "test.xlsx";
+
+    @Test
+    public void testReadFile() {
+        log.info("read {}:\n{}", path, POIExcelUtil.read(path));
+    }
 
     @Test
     public void testExportFile() {
-        String dir = System.getProperty("user.dir");
         List<String> titles = new ArrayList<>();
         titles.add("昵称");
         titles.add("姓名");
@@ -21,12 +29,12 @@ public class TestPOI {
         for (int i = 0; i < 4; i++) {
             //保障顺序
             Map<String, Object> mp = new LinkedHashMap<String, Object>();
-            mp.put("n", "tt" + i);
-            mp.put("x", "行ing" + i);
-            mp.put("b", "男" + i);
+            mp.put("nick", "nick" + i);
+            mp.put("name", "name" + i);
+            mp.put("sex", "sex" + i);
             datas.add(mp);
         }
-        POIExcelUtil.export(titles, datas, dir + File.separator + "test.xls");
+        POIExcelUtil.write(titles, datas, path);
     }
 
 }
