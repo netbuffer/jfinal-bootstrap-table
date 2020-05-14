@@ -7,6 +7,18 @@
     <link href="static/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="static/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
     <link href="static/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <style>
+        .hide-file {
+            opacity: 0;
+            position: absolute;
+            top: 55px;
+            background-color: red;
+            z-index: 10000;
+            height: 33px;
+            width: 100px;
+            left: 195px;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -76,9 +88,9 @@
             onclick="exporyAll();">
         <span class="glyphicon glyphicon-arrow-down"></span> 导出历史数据到excel
     </button>
-    <button type="button" class="btn btn-default"
-            onclick="import_from_xls();">
-        <span class="glyphicon glyphicon-arrow-up"></span> 导入用户
+    <button type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon-arrow-up"></span>
+        <input class="hide-file" type="file" data-url="user/upload" name="excel" id="fileupload"/> 导入用户
     </button>
     <table id="dtb" data-toggle="table" data-url="user/userlist"
            class="table table-hover" data-show-columns="true" data-search="true"
@@ -165,8 +177,24 @@
 <script src="static/moment.min.js"></script>
 <script src="static/moment.zh-cn.js"></script>
 <script src="static/bootstrap-datetimepicker.min.js"></script>
+<script src="static/jquery-file-upload/jquery.ui.widget.js"></script>
+<script src="static/jquery-file-upload/jquery.fileupload.js"></script>
 <script type="text/javascript">
     $(function () {
+        $("#fileupload").fileupload({
+            add: function (e, data) {
+                console.log("data:%o", data.files[0]);
+                alert("上传文件:" + data.files[0].name);
+                data.submit();
+            },
+            done: function (e, data) {
+                console.log("上传完成:%o", data);
+                if (data.result) {
+                    alert("成功插入" + data.result.count + "条数据");
+                    $("#dtb").bootstrapTable('refresh');
+                }
+            }
+        });
         $.getJSON('newdata', function (data) {
             $("#xinzeng").text(data.newcount);
             $("#xinzeng").tooltip({"title": "今日新增数据，点击查看", "placement": "bottom"});
@@ -206,8 +234,10 @@
             //alert('You click remove icon, row: ' + JSON.stringify(row));
             var delid = $("[data-index=" + index + "]").find('td').eq(0).children().first().val();
             if (confirm("确定删除该条记录吗？" + delid)) {
-                $.getJSON('user/delete', {"id": delid}, function (data) {
-                    $("#dtb").bootstrapTable('refresh');
+                $.post('user/delete', {"id": delid}, function (data) {
+                    if (data.status == "success") {
+                        $("#dtb").bootstrapTable('refresh');
+                    }
                 });
             }
             console.log(value, row, index);

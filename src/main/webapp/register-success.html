@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-<title>注册页</title>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weui/0.3.0/style/weui.min.css" />
-<link rel="stylesheet" type="text/css" href="css/register.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>注册成功</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/weui/2.3.0/style/weui.min.css"/>
 </head>
 <body ontouchstart>
-<div class="container">
-	<div class="weui_msg">
-        <div class="weui_icon_area"><i class="weui_icon_success weui_icon_msg"></i></div>
-        <div class="weui_text_area">
-            <h2 class="weui_msg_title">注册成功</h2>
-            <p class="weui_msg_desc">您的注册成功啦</p>
+<div class="container" id="container">
+    <div class="page msg_success js_show">
+        <div class="weui-msg">
+            <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+            <div class="weui-msg__text-area">
+                <h2 class="weui-msg__title">注册成功</h2>
+                <p class="weui-msg__desc">内容详情，可根据实际需要安排，如果换行则不超过规定长度，居中展现<a href="javascript:">文字链接</a></p>
+            </div>
+            <div class="weui-msg__opr-area">
+                <p class="weui-btn-area">
+                    <a href="javascript:history.back();" class="weui-btn weui-btn_primary">继续注册</a>
+                </p>
+            </div>
+            <div class="weui-msg__tips-area">
+                <p class="weui-msg__tips">提示详情，可根据实际需要安排，如果换行则不超过规定长度，居中展现<a href="javascript:">文字链接</a></p>
+            </div>
+            <div class="weui-msg__extra-area">
+                <div class="weui-footer">
+                    <p class="weui-footer__links">
+                        <a href="javascript:" class="weui-footer__link">底部链接文本</a>
+                    </p>
+                    <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+                </div>
+            </div>
         </div>
-        <div class="weui_opr_area">
-            <p class="weui_btn_area">
-                <a class="weui_btn weui_btn_primary" href="javascript:;">确定</a>
-                <a class="weui_btn weui_btn_default" href="javascript:;">取消</a>
-            </p>
-        </div>
-        <div class="weui_extra_area">
-            <a href="">查看详情</a>
+
+        <div class="page__ft j_bottom">
+            <a href="javascript:home()"><img src="images/icon_footer_link.png"></a>
         </div>
     </div>
 </div>

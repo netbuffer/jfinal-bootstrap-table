@@ -8,7 +8,8 @@
 * bootstrap3
 * bootstrap-table1.9
 * druid
-* weui
+* [weui](https://github.com/weui/weui)
+* [jQuery-File-Upload](https://github.com/blueimp/jQuery-File-Upload)
 
 # 微信扫码使用gitee工具
 ![gitee工具](https://s1.ax1x.com/2018/08/10/P60MMF.jpg)

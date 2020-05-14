@@ -43,7 +43,12 @@ public class POIExcelUtil {
             int cells = row.getPhysicalNumberOfCells();
             List<String> arr = new ArrayList<>(cells);
             for (int i = 0; i < cells; i++) {
-                arr.add(row.getCell(i).getStringCellValue());
+                CellType cellType = row.getCell(i).getCellType();
+                if (cellType == CellType.NUMERIC) {
+                    arr.add(String.valueOf(row.getCell(i).getNumericCellValue()));
+                } else if (cellType == CellType.STRING) {
+                    arr.add(row.getCell(i).getStringCellValue());
+                }
             }
             data.add(arr);
         }

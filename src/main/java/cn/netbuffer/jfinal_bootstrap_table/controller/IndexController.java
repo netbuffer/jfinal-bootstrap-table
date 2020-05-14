@@ -15,6 +15,7 @@ import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.ehcache.CacheInterceptor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import java.io.File;
@@ -86,6 +87,9 @@ public class IndexController extends Controller {
     public void export() {
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
         List<User> users = User.dao.find("select * from " + ConfigConstant.USERTABLE + " limit 50");
+        if (CollectionUtils.isEmpty(users)) {
+            renderText("暂无数据");
+        }
         String projectPath = getRequest().getServletContext().getRealPath("export");
         int userCount = users.size();
         List<Map<String, Object>> mps = new ArrayList<Map<String, Object>>(users.size());
@@ -95,13 +99,13 @@ public class IndexController extends Controller {
         }
         log.info("mps:{}", mps.toString());
         List<String> titles = new ArrayList<String>(mps.get(0).size() - 1);
-        titles.add("adddate");
-        titles.add("age");
-        titles.add("deliveryaddress");
         titles.add("id");
         titles.add("name");
-        titles.add("phone");
+        titles.add("age");
         titles.add("sex");
+        titles.add("phone");
+        titles.add("adddate");
+        titles.add("deliveryaddress");
         String file = projectPath + format.format(new Date()) + "." + ConfigConstant.EXCELSTR;
         POIExcelUtil.write(titles, mps, file);
         renderFile(new File(file));
