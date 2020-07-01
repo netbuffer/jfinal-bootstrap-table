@@ -90,7 +90,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.38</version>
+			<version>8.0.16</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -184,7 +184,7 @@
 					<dependency>
 						<groupId>mysql</groupId>
 						<artifactId>mysql-connector-java</artifactId>
-						<version>5.1.38</version>
+						<version>8.0.16</version>
 					</dependency>
 				</dependencies>
 				<!-- common configuration shared by all executions 连接配置 -->
