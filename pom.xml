@@ -21,7 +21,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jfinal.version>4.8</jfinal.version>
+		<jfinal.version>4.9.11</jfinal.version>
 		<freemarker.version>2.3.30</freemarker.version>
 		<poi.version>4.1.2</poi.version>
 		<cos.version>2020.4</cos.version>
